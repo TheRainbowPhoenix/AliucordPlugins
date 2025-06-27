@@ -44,14 +44,16 @@ jobs:
           cd $GITHUB_WORKSPACE/src
           chmod +x gradlew
           ./gradlew make generateUpdaterJson
-          cp **/build/*.zip $GITHUB_WORKSPACE/builds
+          cp src/**/build/*.zip $GITHUB_WORKSPACE/builds
           cp build/updater.json $GITHUB_WORKSPACE/builds
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: aliucord-plugins
-          path: $GITHUB_WORKSPACE/builds
+          path: |
+            src/**/build/*.zip
+            builds/updater.json
 
       - name: Push builds
         run: |
