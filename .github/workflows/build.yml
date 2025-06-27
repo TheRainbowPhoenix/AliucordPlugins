@@ -35,7 +35,9 @@ jobs:
           cache: gradle
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 8512546  # 7.0
 
       - name: Build Plugins
         run: |
